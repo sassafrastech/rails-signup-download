@@ -3,6 +3,15 @@ class User < ApplicationRecord
   after_initialize :set_default_role, :if => :new_record?
   after_create :sign_up_for_mailing_list
 
+  has_attached_file :avatar, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>'
+  }
+
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+
   def set_default_role
     self.role ||= :user
   end
