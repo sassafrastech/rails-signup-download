@@ -18,8 +18,15 @@
       <p>Upload a profile picture.</p>
       <%= f.label :photo %>
       <%= f.file_field :avatar %>
+
+      <hr>
+      <% if @user.avatar? %>
+        <%= image_tag @user.avatar.url(:medium) %>
+      <%end%>
+
     </div>
     </fieldset>
+
     <fieldset>
       <p>Leave these fields blank if you don't want to change your password.</p>
       <div class="form-group">

@@ -9,8 +9,6 @@ Dotenv.load
 Bundler.require(*Rails.groups)
 
 
-puts ENV['S3_BUCKETNAME']
-
 module RailsSignupDownload
   class Application < Rails::Application
 
