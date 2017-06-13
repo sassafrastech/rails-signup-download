@@ -24,6 +24,13 @@
         <%= image_tag @user.avatar.url(:medium) %>
       <%end%>
 
+      <% if current_user.avatar.url.present? %>
+        <%= f.label :remove_avatar %>
+        <%= f.check_box :remove_avatar %>
+      <% end %>
+
+
+
     </div>
     </fieldset>
 

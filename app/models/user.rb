@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  # attr_accessor :remove_avatar
 
   def set_default_role
     self.role ||= :user
@@ -34,6 +35,10 @@ class User < ApplicationRecord
         status: 'subscribed'
     })
     Rails.logger.info("Subscribed #{self.email} to MailChimp") if result
+  end
+
+
+  def remove_avatar
   end
 
 end
