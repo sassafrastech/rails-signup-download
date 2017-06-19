@@ -9,7 +9,6 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
       current_user.save
     end
 
-
     resource_updated = update_resource(resource, account_update_params)
     yield resource if block_given?
     if resource_updated
@@ -26,9 +25,6 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
       respond_with resource
     end
 
-
-
   end
-
 
 end
