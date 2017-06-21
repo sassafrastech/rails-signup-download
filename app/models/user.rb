@@ -44,7 +44,6 @@ class User < ApplicationRecord
     self.avatar.clear
     self.avatar = nil
     self.save
-    puts 'hiii'
   end
 
 end
