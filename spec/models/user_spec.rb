@@ -17,7 +17,7 @@ describe User do
   describe '#remove_avatar' do
     it 'deletes the photo' do
       @user.remove_avatar('1')
-      expect(@user.avatar).to eq nil
+      expect(@user.avatar.exists?).to be(false)
     end
   end
 
