@@ -47,14 +47,12 @@ feature 'User edit', :devise do
   #   Then I see an account updated message
   scenario "user adds profile picture" do
     login_as(@user, :scope => :user)
-    # visit edit_user_registration_path(@user)
-    # fill_in { fixture_file_upload(Rails.root.join('app/assets/images/image1.png'), 'image/png') }
-    # fill_in 'Current password', :with => @user.password
-    # click_button 'Update'
-    # txts = [I18n.t( 'devise.registrations.updated'), I18n.t( 'devise.registrations.update_needs_confirmation')]
-    # expect(page).to have_content(/.*#{txts[0]}.*|.*#{txts[1]}.*/)
-
-    # put '/users', users: { "avatar"=> <ActionDispatch::Http::UploadedFile:0x007fcca0e4c0e0 @tempfile=<Tempfile:/var/folders/4r/v4pzy1_j4rv9r0d9rp_gqd6w0000gn/T/RackMultipart20170619-68319-ab2dxs.jpg>, @original_filename="DCINER2UAAEE0F_.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"DCINER2UAAEE0F_.jpg\"\r\nContent-Type: image/jpeg\r\n"> }
+    visit edit_user_registration_path(@user)
+    Paperclip::Attachment.any_instance.stub(:save).and_return(true)
+    fill_in 'Current password', :with => @user.password
+    click_button 'Update'
+    txts = [I18n.t( 'devise.registrations.updated'), I18n.t( 'devise.registrations.update_needs_confirmation')]
+    expect(page).to have_content(/.*#{txts[0]}.*|.*#{txts[1]}.*/)
   end
 
 
@@ -70,7 +68,6 @@ feature 'User edit', :devise do
     click_button 'Update'
     txts = [I18n.t( 'devise.registrations.updated'), I18n.t( 'devise.registrations.update_needs_confirmation')]
     expect(page).to have_content(/.*#{txts[0]}.*|.*#{txts[1]}.*/)
-end
-
+    end
 
 end

@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-  # attr_accessor :remove_avatar
+  attr_accessor :remove_avatar
 
   def set_default_role
     self.role ||= :user
@@ -38,7 +38,13 @@ class User < ApplicationRecord
   end
 
 
-  def remove_avatar
+  def remove_avatar(delete=0)
+    return unless delete == '1'
+    self.avatar.destroy
+    self.avatar.clear
+    self.avatar = nil
+    self.save
+    puts 'hiii'
   end
 
 end

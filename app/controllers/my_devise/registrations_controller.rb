@@ -1,13 +1,12 @@
 class MyDevise::RegistrationsController < Devise::RegistrationsController
 
   def update
-    puts params
+
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
     if params[:user][:remove_avatar] == '1'
-      current_user.avatar.clear
-      current_user.save
+      current_user.remove_avatar(params[:user][:remove_avatar])
     end
 
     resource_updated = update_resource(resource, account_update_params)
