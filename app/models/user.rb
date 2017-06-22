@@ -3,17 +3,6 @@ class User < ApplicationRecord
   after_initialize :set_default_role, :if => :new_record?
   after_create :sign_up_for_mailing_list
 
-  attr_accessor :avatar
-  mount_uploader :avatar, AvatarUploader
-
-  AvatarUploader < IconBase
-    DIEMENSIONS=[120,120]
-
-    def filename
-     "avatar.png"
-    end
-  end
-
   def set_default_role
     self.role ||= :user
   end
@@ -37,13 +26,5 @@ class User < ApplicationRecord
     })
     Rails.logger.info("Subscribed #{self.email} to MailChimp") if result
   end
-  # User Avatar Validation
-  validates_integrity_of  :avatar
-  validates_processing_of :avatar
-
-  private
-    def avatar_size_validation
-      errors[:avatar] << "should be less than 500KB" if avatar.size > 0.5.megabytes
-    end
 
 end
