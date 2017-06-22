@@ -6,13 +6,6 @@
       <%= f.label :name %>
       <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
     </div>
-    <div class="field">
-    <%= f.label :avatar do %>
-      <%= f.file_field :avatar %>
-      <%= f.hidden_field :avatar_cache %>
-    <% end %>
-    </div>
-    <%-# Added form field for avatar -%>
     <div class="form-group">
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
