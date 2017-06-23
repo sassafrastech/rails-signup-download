@@ -13,6 +13,7 @@ gem 'carrierwave'
 gem 'devise'
 gem 'mini_magick'
 gem 'fog'
+gem 'figaro'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
