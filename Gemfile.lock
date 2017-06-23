@@ -404,6 +404,7 @@ DEPENDENCIES
   faker
   figaro
   fog
+  fog-aws
   gibbon
   high_voltage
   jbuilder (~> 2.5)

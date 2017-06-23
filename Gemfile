@@ -12,8 +12,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'carrierwave'
 gem 'devise'
 gem 'mini_magick'
-gem 'fog'
+gem 'fog', require: 'fog-aws'
 gem 'figaro'
+gem 'fog-aws'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
